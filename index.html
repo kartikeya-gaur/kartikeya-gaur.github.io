@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kartikeya Gaur</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Kartikeya Gaur – M.Tech IISc | PhD applicant in Geospatial AI, satellite remote sensing, transportation systems, and infrastructure analytics.">
+  <meta name="keywords" content="Geospatial AI, Remote Sensing, Transportation Systems, Infrastructure Analytics, PhD Applicant, IISc">
+  <meta name="author" content="Kartikeya Gaur">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Kartikeya Gaur | PhD Applicant">
+  <meta property="og:description" content="Research portfolio in Geospatial Intelligence and AI for Infrastructure">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon"
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text x='-10' y='52' font-size='56'>🦉</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════
+     NAVIGATION
+════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="https://kartikeya-gaur.github.io/assets/pdf/080626_CV_Kartikeya_Gaur.pdf" target="_blank">CV</a></li>
+    <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+  <i class="fas fa-moon"></i>
+</button></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+
+    <!-- LEFT -->
+    <div class="hero-text">
+
+      <div class="hero-header">
+        <h1 class="hero-name">
+          Kartikeya <strong>Gaur</strong>
+        </h1>
+
+        <p class="hero-tagline">
+          Graduate Student in Smart Mobility and Logistics Systems, Centre for Infrastructure, Sustainable Transportation and Urban Planning (CiSTUP), Indian Institute of Science (IISc), Bengaluru
+        </p>
+      </div>
+
+      <div  class="research-lead">
+        <p>
+        I am currently enrolled in the Masters program in Smart Mobility and Logistics Systems at the Indian Institute of Science (IISc), Bengaluru, where I conduct research at the Centre for Infrastructure, Sustainable Transportation and Urban Planning (CiSTUP). My research interests lie in the fields of transport network science, machine learning for cyber-physical systems, choice modelling, and intelligent urban mobility. 
+        </p>
+        <p>
+        In particular, I have developed semiring-based Dijkstra algorithms for multimodal route planning, worked on robust deep neural networks for contributor verification, and conducted ground surveys for factors influencing commuter choice in Bengaluru.
+        </p>
+        <p>
+        Prior to my Master, I obtained a Bachelor of Technology (B.Tech) in Civil Engineering from the National Institute of Technology (NIT), Hamirpur (2024). I have worked as a Junior Research Fellow at the Indian Institute of Remote Sensing (IIRS), Dehradun, where I contributed to the NICES project on bathymetry estimation using ICESat-2 photon data. 
+        </p>
+        <p>
+        I have also completed research internships and technical training at IIT Roorkee, BISAG-N, and the Defence Laboratory (DRDO), Jodhpur, focusing on GIS applications, terrain analysis, and hyperspectral datasets.
+        </p>
+        <p>
+          The summary above is mostly written by AI :)
+        </p>
+      </div>
+
+      <div class="hero-links-row">
+        <span class="links-label">Links:</span>
+
+        <a href="mailto:kartikeyagaur@gmail.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a href="https://scholar.google.com/citations?user=7cbSnFAAAAAJ&hl=en&oi=sra"
+           target="_blank" rel="noopener">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+
+        <a href="https://github.com/kartikeya-gaur"
+           target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/gaur-kartikeya/"
+           target="_blank" rel="noopener">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://www.behance.net/gaurk9"
+           target="_blank" rel="noopener">
+          <i class="fab fa-behance"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-visual">
+      <img src="profile.jpg"
+           alt="Kartikeya Gaur"
+           class="hero-img">
+
+      <div class="hero-address">
+        310 IDR<br>
+        Indian Institute of Science<br>
+        Bengaluru 560 012, India
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ════════════════════════════
+     RESEARCH FOCUS
+════════════════════════════ -->
+<!-- <section class="section" id="research">
+  <div class="section-inner">
+    <header class="section-header">
+      <span class="section-label">Focus Areas</span>
+      <h2 class="section-title">Where AI meets<br>Earth Intelligence</h2>
+    </header>
+    
+    <div class="research-tags">
+      <span class="tag">Geospatial AI</span>
+      <span class="tag">Satellite Altimetry</span>
+      <span class="tag">Transportation Systems</span>
+      <span class="tag">Infrastructure Analytics</span>
+      <span class="tag">Remote Sensing</span>
+      <span class="tag">GIS &amp; Cartography</span>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ════════════════════════════
+     INTERACTIVE MAP
+════════════════════════════ -->
+<div class="map-section" id="map-section">
+  <div class="map-header-wrap">
+    <div class="map-header-left">
+      <span class="section-label on-dark">Projects across India</span>
+      <!-- <h2 class="section-title on-dark">Projects across India</h2> -->
+    </div>
+
+    <p class="map-intro-text">
+      An interactive map of research experiences with DRDO,
+      BISAG-N, and IIRS–ISRO. Hover over markers to link lab
+      and study-area pairs.
+    </p>
+  </div>
+
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════
+     PROJECTS
+════════════════════════════ -->
+<section class="section section-white" id="projects">
+  <div class="section-inner">
+    <header class="section-header">
+      <span class="section-label">Selected Work</span>
+      <!-- <h2 class="section-title">Projects</h2> -->
+    </header>
+
+    <div class="projects-grid">
+
+  <!-- Project 1: Capstone Project (Wide Card) -->
+  <div class="project-card project-card-wide">
+    <div class="project-card-body">
+      <span class="project-tag-pill">Logistics · System Dynamics · Simulation</span>
+      <h3>Optimising Warehouse Utilisation at Land Port Petrapole</h3>
+      <p>
+        An operational study diagnosing warehouse over-utilisation (191.7% of designed capacity) at India's largest land port. Developed a five-layer IoT data architecture, implemented ABC-XYZ zonation algorithms, and modeled a discrete-event simulation in Python (using AnyLogic) to achieve a projected sub-6-hour truck clearance window.
+      </p>
+      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/Augmented_Final_Report_EY.pdf" target="_blank">
+        Read Capstone Report →
+      </a>
+    </div>
+  </div>
+
+  <!-- Project 2: Semiring Dijkstra -->
+  <div class="project-card">
+    <div class="project-card-body">
+      <span class="project-tag-pill">Algorithms · Network Science</span>
+      <h3>Semiring-Based Dijkstra for Multimodal Route Planning</h3>
+      <p>
+        Designed and implemented an algebraic routing engine in Python that unifies road and BMTC bus networks into a single category-theoretic graph. Using a generalized Dijkstra algorithm, the engine computes optimal paths across interchangeable semirings representing distance, time, fare, safety, or lexicographic combinations.
+      </p>
+      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/SL203_Project_Report_Kartikeya_Gaur_26371.pdf" target="_blank">
+        Read Project Report →
+      </a>
+    </div>
+  </div>
+
+  <!-- Project 3: Convex Travel Demand -->
+  <div class="project-card">
+    <div class="project-card-body">
+      <span class="project-tag-pill">Choice Modelling · Optimization</span>
+      <h3>Convex Travel Demand Forecasting Model</h3>
+      <p>
+        Formulated and implemented a unified "estimate-then-predict" travel demand pipeline in Julia (using JuMP and MOSEK). The convex optimization framework jointly estimates destination, nested-mode, and path-size route choice parameters, resolving the classic sequential feedback issues of traditional four-step models.
+      </p>
+      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/ce271_project_report_kartikeya_rahul.pdf" target="_blank">
+        Read Case Study →
+      </a>
+    </div>
+  </div>
+
+  <!-- Project 4: Intrusion Detection -->
+  <div class="project-card">
+        <div class="project-card-body">
+          <span class="project-tag-pill">GIS · Urban Planning</span>
+          <h3>Last-Mile Urban Mobility</h3>
+          <p>
+            Geospatial analytics and visualization for last-mile connectivity
+            and urban transport efficiency across Indian cities.
+          </p>
+          <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/multi_modal.pdf" target="_blank">
+            View Analysis Report →
+          </a>
+        </div>
+      </div>
+
+  <!-- Project 5: Contributor Verification -->
+  <div class="project-card">
+    <div class="project-card-body">
+      <span class="project-tag-pill">Deep Learning · NLP</span>
+      <h3>Contributor Verification with Robust DNNs</h3>
+      <p>
+        Built multi-branch Deep Neural Networks (DNNs) with aggressive regularization (L2 and Dropout) to verify authorship contributors. Solved a binary classification problem across 25,000 articles using text sequence embeddings and categorical feature inputs with Keras.
+      </p>
+      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/ml_1.pdf" target="_blank">
+        Read Project Report →
+      </a>
+    </div>
+  </div>
+
+  <!-- Project 6: Edge AI -->
+  <div class="project-card project-card-wide">
+    <div class="project-card-body">
+      <span class="project-tag-pill">Edge AI · Computer Vision</span>
+      <h3>Nighttime Street Light Functional Audit</h3>
+      <p>
+        A vehicle-mounted, edge-deployed system for auditing urban lighting infrastructure. Trained object detection baselines (YOLOv5, YOLOv8) on custom nighttime drive-by video sequences. Implemented post-training quantization (INT8) and pruning techniques to optimize inference frame rates for edge devices like Raspberry Pi.
+      </p>
+      <a class="report-link" href="https://github.com/AnantRajput415/Nighttime-Street-Light-Functional-Audit-Using-Computer-Vision-on-Edge-Device" target="_blank">
+        View Project Details →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+      
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     PUBLICATIONS
+════════════════════════════ -->
+<section class="section" id="publications">
+  <div class="section-inner">
+    <header class="section-header">
+      <span class="section-label">Academic Output</span>
+      <!-- <h2 class="section-title">Publications &amp;<br>Technical Reports</h2> -->
+    </header>
+
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-year">2025</span>
+        <div class="pub-body">
+          <p class="pub-title">SWOT Mission with Wide-Swath Altimetry: Observations and Insights into India’s Inland Waterbodies</p>
+          <p class="pub-venue">Research Communication · Indian Institute of Remote Sensing</p>
+          <div class="pub-links">
+            <a href="https://link.springer.com/article/10.1007/s12524-025-02234-8" target="_blank">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <span class="pub-year">2025</span>
+        <div class="pub-body">
+          <p class="pub-title">Nadir and Wide Swath Altimetry for Inland Water Bodies</p>
+          <p class="pub-venue">Technical Report · Indian Institute of Remote Sensing</p>
+          <div class="pub-links">
+            <a href="https://kartikeya-gaur.github.io/assets/pdf/SWOT_Report_23-05-25.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════
+     EDUCATION
+════════════════════════════ -->
+<!-- <section class="section section-white" id="education">
+  <div class="section-inner">
+    <header class="section-header">
+      <span class="section-label">Academic Background</span>
+      <h2 class="section-title">Education</h2>
+    </header>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <span class="edu-year-badge">2025 – 2027</span>
+        <h3>M.Tech — Infrastructure Systems</h3>
+        <p class="edu-school">Indian Institute of Science (IISc), Bengaluru</p>
+        <p class="edu-desc">
+          Focus on geospatial analysis, transportation engineering,
+          and data-driven infrastructure planning.
+        </p>
+      </div>
+      <div class="edu-card">
+        <span class="edu-year-badge">2021 – 2025</span>
+        <h3>B.Tech — Civil Engineering</h3>
+        <p class="edu-school">NIT Hamirpur</p>
+        <p class="edu-desc">
+          CGPA: 8.48 · Geomatics, structural engineering,
+          and computational methods.
+        </p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ════════════════════════════
+     FOOTER
+════════════════════════════ -->
+
+<footer class="mini-footer">
+  <p>© 2026 Kartikeya Gaur</p>
+  <a href="https://github.com/gaur-9k"
+     target="_blank"
+     rel="noopener"
+     aria-label="GitHub">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/kartikeya-gaur"
+     target="_blank"
+     rel="noopener"
+     aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://scholar.google.com/citations?user=7cbSnFAAAAAJ&hl=en&oi=sra"
+     target="_blank"
+     rel="noopener"
+     aria-label="Google Scholar">
+    <i class="fas fa-graduation-cap"></i>
+  </a>
+
+  <a href="mailto:kartikeyagaur@gmail.com"
+     aria-label="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+</footer>
+
+<!-- ════════════════════════════
+     SCRIPTS
+════════════════════════════ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="map-projects.js"></script>
+
+
+
+<script>
+  /* Mobile navigation toggle */
+  const burger  = document.getElementById('nav-burger');
+  const navList = document.getElementById('nav-links');
+
+  if (burger) {
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('open');
+      burger.classList.toggle('active');
+    });
+    navList.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        navList.classList.remove('open');
+        burger.classList.remove('active');
+      })
+    );
+  }
+
+  /* Subtle nav border on scroll */
+  /* Subtle nav border on scroll + progress bar */
+  const progressBar = document.getElementById('scroll-progress');
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
+
+  const themeToggle = document.getElementById('theme-toggle');
+
+const savedTheme = localStorage.getItem('theme');
+
+if(savedTheme){
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  themeToggle.innerHTML =
+    savedTheme === 'dark'
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+}
+
+themeToggle?.addEventListener('click', () => {
+
+  const current =
+    document.documentElement.getAttribute('data-theme');
+
+  const next =
+    current === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.setAttribute('data-theme', next);
+
+  localStorage.setItem('theme', next);
+
+  themeToggle.innerHTML =
+    next === 'dark'
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+});
+</script>
+
+</body>
+</html>
