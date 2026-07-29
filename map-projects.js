@@ -3,12 +3,12 @@
    Features: Linked Hover, Dashboard UI, Cardinal Coordinates
    ========================================================= */
 
-const INDIA_BOUNDS = [[6, 68], [37, 98]];
+const INDIA_BOUNDS = [[-38, 60], [37, 155]]; // extended to include Sydney, AU
 const map = L.map("map", {
   zoomControl: true,
   maxBounds: INDIA_BOUNDS,
   maxBoundsViscosity: 1.0
-}).fitBounds(INDIA_BOUNDS);
+}).fitBounds(INDIA_BOUNDS); // shows everything by default now
 
 /* -------------------------
    1. Basemap (No Labels)
@@ -23,6 +23,15 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/
    2. Project Data
 -------------------------- */
 const PROJECTS = [
+  {
+  id: "unsw",
+  title: "Comparative Transit Route-Choice Modeling",
+  labName: "UNSW, Sydney",
+  location: "Bengaluru & Sydney Transit Networks",
+  desc: "Built a comparative route-choice modeling pipeline (Expanded Path Size Logit, Nested Recursive Logit) for transit networks in Sydney and Bengaluru, integrating real GTFS feeds and ridership data under Prof. Taha Rashidi.",
+  reportUrl: "https://github.com/kartikeya-gaur/PT_route_choice_eps_nrl_mini_project",
+  coords: { lab: [-33.9173, 151.2313], study: [12.9716, 77.5946], type: 'point' }
+  },
   {
     id: "drdo",
     title: "Military Trafficability Analysis",
