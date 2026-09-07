@@ -81,11 +81,11 @@ const STYLES = {
 const dashboard = L.control({ position: "topright" });
 
 dashboard.onAdd = function () {
-  const div = L.DomUtil.create("div", "sidebar-dashboard");
+  const div = L.DomUtil.create("div", "sidebar-dashboard collapsed");
   div.innerHTML = `
     <h3 class="sidebar-header">
       <span>Research Explorer</span>
-      <button class="sidebar-toggle" title="Collapse panel">&#8963;</button>
+      <button class="sidebar-toggle" title="Expand panel">&#8964;</button>
     </h3>
     <div id="project-list" class="scroll-container"></div>
     <hr>
