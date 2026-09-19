@@ -83,8 +83,9 @@ const PROJECTS = [
 /* -------------------------
    3. Styles
 -------------------------- */
-const COLOR_LAB   = "##885D43"; // Purple
-const COLOR_STUDY = "##885D43"; // Amber/Yellow
+const COLOR_LAB   = "#8B5CF6"; // Purple  (lab markers)
+const COLOR_STUDY = "#F59E0B"; // Amber/Yellow (study markers)
+const COLOR_PANEL = "#885D43"; // Brown   (sidebar panel – fixed)
 
 const STYLES = {
   lab:   { radius: 9, fillColor: COLOR_LAB, color: "#fff", weight: 2, fillOpacity: 0.8 },
@@ -114,8 +115,8 @@ dashboard.onAdd = function () {
       <p class="placeholder" style="color:#777; font-size:13px; margin:0;">Click any marker to view details</p>
     </div>
     <div class="mini-legend">
-      <span><span class="dot lab" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#7952B3; margin-right:4px;"></span> Resource Center</span>
-      <span><span class="dot study" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#FFC107; margin-right:4px;"></span> Study Area</span>
+      <span><span class="dot lab" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:${COLOR_LAB}; margin-right:4px;"></span> Resource Center</span>
+      <span><span class="dot study" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:${COLOR_STUDY}; margin-right:4px;"></span> Study Area</span>
     </div>
     <button id="reset-view" class="btn-reset">Reset Map View</button>
   `;
@@ -156,7 +157,7 @@ map.on("mousemove", (e) => {
 });
 
 /* -------------------------
-   5. Render Dots & Link to Panel (WAS MISSING)
+   5. Render Dots & Link to Panel
 -------------------------- */
 const layerGroups = {};
 
@@ -226,10 +227,10 @@ function selectProject(id, clickedType = 'lab') {
     if (toggle) toggle.innerHTML = "&#8963;";
   }
 
-  // Dynamic Theme Color Tone
-  const themeColor = clickedType === 'lab' ? COLOR_LAB : COLOR_STUDY;
+  // Fixed panel color (same for lab and study clicks)
+  const themeColor = COLOR_PANEL;
   const badgeLabel = clickedType === 'lab' ? "Resource Center / Lab" : "Study Area";
-  const badgeTextColor = clickedType === 'lab' ? "#ffffff" : "#222222";
+  const badgeTextColor = "#ffffff";
 
   if (panel) {
     panel.style.borderTop = `4px solid ${themeColor}`;
@@ -286,7 +287,7 @@ document.getElementById("reset-view").onclick = () => {
   const panel  = document.querySelector(".sidebar-dashboard");
   const header = document.getElementById("sidebar-header");
   if (panel) {
-    panel.style.borderTop = `4px solid ${COLOR_LAB}`;
+    panel.style.borderTop = `4px solid ${COLOR_PANEL}`;
     panel.style.boxShadow = "";
   }
   if (header) {
