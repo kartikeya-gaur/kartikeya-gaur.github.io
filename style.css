@@ -1065,42 +1065,133 @@ body{
   transition: width 0.08s linear;
   pointer-events: none;
 }
-/* ═══════════════════════════════════════════════
-   Research Explorer Dynamic Color Tone & Sidebar
-   ═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   Research Explorer (Dashboard) Fix
+   ═══════════════════════════════════════════════════════ */
 .sidebar-dashboard {
-  background: #ffffff;
-  border-radius: 8px;
-  width: 310px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  transition: max-height 0.35s ease-in-out, border-top 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  max-height: 520px;
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  width: 320px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  font-family: 'DM Sans', sans-serif !important;
+  color: #222222 !important;
+  z-index: 1000 !important;
+  border-top: 4px solid #7952B3;
+  transition: box-shadow 0.3s ease, border-top 0.3s ease;
 }
 
-.sidebar-dashboard.collapsed {
-  max-height: 44px;
-}
-
+/* Header bar */
 .sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 10px 14px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  color: inherit !important;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-header span {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: inherit !important;
 }
 
 .sidebar-toggle {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 2px 6px !important;
+  color: inherit !important;
 }
 
-.person-card a:hover {
-  filter: brightness(0.8);
-  text-decoration: underline;
+/* ── When Collapsed ── */
+.sidebar-dashboard.collapsed {
+  height: auto !important;
+  max-height: none !important;
+}
+
+.sidebar-dashboard.collapsed .scroll-container,
+.sidebar-dashboard.collapsed hr,
+.sidebar-dashboard.collapsed #project-details,
+.sidebar-dashboard.collapsed .mini-legend,
+.sidebar-dashboard.collapsed #reset-view {
+  display: none !important;
+}
+
+.sidebar-dashboard.collapsed .sidebar-header {
+  border-bottom: none !important;
+}
+
+/* ── When Expanded ── */
+.sidebar-dashboard:not(.collapsed) {
+  height: auto !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
+
+.sidebar-dashboard:not(.collapsed) .scroll-container,
+.sidebar-dashboard:not(.collapsed) #project-details,
+.sidebar-dashboard:not(.collapsed) .mini-legend,
+.sidebar-dashboard:not(.collapsed) #reset-view {
+  display: block;
+}
+
+/* Details and content */
+.sidebar-dashboard .scroll-container {
+  max-height: 130px;
+  overflow-y: auto;
+  padding: 6px 12px;
+}
+
+.sidebar-dashboard .project-item {
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.sidebar-dashboard .project-item:hover {
+  background: #f1f3f5;
+}
+
+.sidebar-dashboard .project-item.active {
+  background: #e9ecef;
+  border-left: 3px solid #7952B3;
+}
+
+.sidebar-dashboard .details-box {
+  padding: 10px 16px;
+}
+
+.sidebar-dashboard .mini-legend {
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-dashboard .btn-reset {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 8px 16px 14px 16px;
+  padding: 6px 10px;
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
 }
