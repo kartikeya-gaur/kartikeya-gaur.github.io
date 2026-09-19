@@ -27,11 +27,11 @@ const PROJECTS = [
     title: "Comparative Transit Route-Choice Modeling",
     labName: "UNSW, Sydney",
     location: "Bengaluru & Sydney Transit Networks",
-    desc: "Built a comparative route-choice modeling pipeline (Expanded Path Size Logit, Nested Recursive Logit) for transit networks in Sydney and Bengaluru, integrating real GTFS feeds and ridership data under Prof. Taha Rashidi.",
+    desc: "Built a comparative route-choice modeling pipeline (Expanded Path Size Logit, Nested Recursive Logit) for transit networks in Sydney and Bengaluru, integrating real GTFS feeds and synthetic ridership data under Prof. Taha Rashidi.",
     reportUrl: "https://kartikeya-gaur.github.io/assets/pdf/pt_rc_eps_nrl.pdf",
     person: {
       name: "Prof. Taha Rashidi",
-      role: "Faculty Lead / Supervisor",
+      role: "Faculty Supervisor",
       url: "https://www.unsw.edu.au/staff/taha-rashidi"
     },
     coords: { lab: [-33.9173, 151.2313], study: [12.9716, 77.5946], type: 'point' }
@@ -45,7 +45,7 @@ const PROJECTS = [
     reportUrl: "https://kartikeya-gaur.github.io/assets/pdf/dlj_2.pdf",
     person: {
       name: "Defence Laboratory (DLJ)",
-      role: "Research Division",
+      role: "Intern",
       url: "https://www.drdo.gov.in/drdo/labs-and-establishments/defence-laboratory-dlj"
     },
     coords: { lab: [26.2389, 73.0243], study: [26.9157, 70.9083], type: 'point' }
@@ -58,8 +58,8 @@ const PROJECTS = [
     desc: "PM GatiShakti infrastructure planning for the NE region.",
     reportUrl: "https://kartikeya-gaur.github.io/assets/pdf/bisag-n_2.pdf",
     person: {
-      name: "BISAG-N Team",
-      role: "Geospatial Planning Lead",
+      name: "BISAG-N",
+      role: "Trainee",
       url: "https://bisag-n.gov.in/"
     },
     coords: { lab: [23.2156, 72.6369], study: [24.8170, 93.9368], type: 'point' }
@@ -73,7 +73,7 @@ const PROJECTS = [
     reportUrl: "https://kartikeya-gaur.github.io/assets/pdf/IIRS_work_report.pdf",
     person: {
       name: "Water Resources Dept (IIRS–ISRO)",
-      role: "Altimetry Research Lead",
+      role: "Junior Research Fellow",
       url: "https://www.iirs.gov.in/"
     },
     coords: { lab: [30.3165, 78.0322], study: [[25.4358, 81.8463], [25.3176, 82.9739]], type: 'line' }
@@ -83,8 +83,8 @@ const PROJECTS = [
 /* -------------------------
    3. Styles
 -------------------------- */
-const COLOR_LAB   = "#7952B3"; // Purple
-const COLOR_STUDY = "#FFC107"; // Amber/Yellow
+const COLOR_LAB   = "##885D43"; // Purple
+const COLOR_STUDY = "##885D43"; // Amber/Yellow
 
 const STYLES = {
   lab:   { radius: 9, fillColor: COLOR_LAB, color: "#fff", weight: 2, fillOpacity: 0.8 },
