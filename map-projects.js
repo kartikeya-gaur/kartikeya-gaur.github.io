@@ -28,7 +28,7 @@ const PROJECTS = [
     labName: "UNSW, Sydney",
     location: "Bengaluru & Sydney Transit Networks",
     desc: "Built a comparative route-choice modeling pipeline (Expanded Path Size Logit, Nested Recursive Logit) for transit networks in Sydney and Bengaluru, integrating real GTFS feeds and ridership data under Prof. Taha Rashidi.",
-    reportUrl: "https://github.com/kartikeya-gaur/PT_route_choice_eps_nrl_mini_project",
+    reportUrl: "https://kartikeya-gaur.github.io/assets/pdf/pt_rc_eps_nrl.pdf",
     person: {
       name: "Prof. Taha Rashidi",
       role: "Faculty Lead / Supervisor",
