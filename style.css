@@ -589,7 +589,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 9px 12px;
   border-radius: 8px;
   background: var(--ink);
-  color: var(--cream);
+  color: #000000;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
