@@ -175,135 +175,209 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
 
 <!-- ════════════════════════════
      PROJECTS
-════════════════════════════ -->
+     Replace your whole existing <section id="projects"> ... </section> with this.
+
+     Layout rhythm:  full  |  half + half  |  third + third + third  |  full (flipped)
+     Figures live in assets/img/ (1_unsw, 2_petrapole, 3_edgeai, 4_delhi, 5_dijkstra).
+     Change the file extension below if yours aren't .png.
+     "fit-contain" = show the whole figure on a plain background (plots, screenshots);
+     without it the image fills the panel and is cropped (maps).
+════════════ -->
 <section class="section section-white" id="projects">
   <div class="section-inner">
     <header class="section-header">
       <span class="section-label">Selected Work</span>
-      <!-- <h2 class="section-title">Projects</h2> -->
     </header>
 
-    <div class="projects-grid">
+    <div class="pgrid">
 
-      <!-- Project 0: UNSW Research Internship -->
-<div class="project-card project-card-wide">
-  <div class="project-card-body">
-    <span class="project-tag-pill">Route Choice Modeling · Transit Networks · GTFS</span>
-    <h3>Comparative Route-Choice Modeling for Transit Networks (UNSW)</h3>
-    <p>
-      Research Intern, University of New South Wales (UNSW), Sydney, Australia — Jun–Jul 2026.
-      Built a comparative route-choice modeling pipeline (Expanded Path Size Logit, Nested Recursive Logit)
-      for transit networks in Sydney and Bengaluru, integrating real GTFS feeds and ridership data into a
-      reproducible Python analysis workflow, under Prof. Taha Rashidi.
-    </p>
-    <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
-      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/pt_rc_eps_nrl.pdf" target="_blank" rel="noopener">
-        Read Report →
-      </a>
-      <a class="report-link" href="https://github.com/kartikeya-gaur/PT_route_choice_eps_nrl_mini_project" target="_blank" rel="noopener">
-        View on GitHub →
-      </a>
-    </div>
-  </div>
-</div>
-
-  <!-- Project 1: Capstone Project (Wide Card) -->
-  <div class="project-card project-card-wide">
-    <div class="project-card-body">
-      <span class="project-tag-pill">Logistics · System Dynamics · Simulation</span>
-      <h3>Optimising Warehouse Utilisation at Land Port Petrapole</h3>
-      <p>
-        A capstone with Ernst &amp; Young (EY) LLP on warehouse over-utilisation (191.7%) at Land Port Petrapole, India's largest land port. Formulated physical and process interventions, modeled a Selective Pallet Racking system using ABC-XYZ inventory classification, proposed a five-layer IoT data architecture, and built a discrete-event simulation in AnyLogic to analyze vessel and vehicle queuing bottlenecks.
-      </p>
-      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/Augmented_Final_Report_EY.pdf" target="_blank" rel="noopener">
-        Read Capstone Report →
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 2: Semiring Dijkstra -->
-  <div class="project-card">
-    <div class="project-card-body">
-      <span class="project-tag-pill">Algorithms · Network Science</span>
-      <h3>Semiring-Based Dijkstra for Multimodal Route Planning</h3>
-      <p>
-        Designed and implemented an algebraic routing engine in Python that unifies road and BMTC bus networks into a single category-theoretic graph. Using a generalized Dijkstra algorithm, the engine computes optimal paths across interchangeable semirings representing distance, time, fare, safety, or lexicographic combinations.
-      </p>
-      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/SL203_Project_Report_Kartikeya_Gaur_26371.pdf" target="_blank" rel="noopener">
-        Read Project Report →
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 3: Convex Travel Demand -->
-  <div class="project-card">
-    <div class="project-card-body">
-      <span class="project-tag-pill">Choice Modelling · Optimization</span>
-      <h3>Convex Travel Demand Forecasting Model</h3>
-      <p>
-        Reproduced a combined travel demand model (trip distribution, modal split, and traffic assignment) as a single convex program in Julia/JuMP. Reformulated conditional entropy terms as exponential cones and link-latency integrals as power cones, and solved the problem with MOSEK.
-      </p>
-      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/ce271_project_report_kartikeya_rahul.pdf" target="_blank" rel="noopener">
-        Read Case Study →
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 4: Last-Mile Urban Mobility -->
-  <div class="project-card">
-        <div class="project-card-body">
-          <span class="project-tag-pill">GIS · Urban Planning</span>
-          <h3>Last-Mile Urban Mobility</h3>
-          <p>
-            Analyzed large-scale commuter survey data across Bengaluru, Delhi, and Nagpur
-            using Python and built interactive Power BI dashboards. Mapped Delhi's high
-            non-walk dependency zones (13.35% of area, 38 of 290 wards) and found that Nagpur
-            has the highest population accessibility per station, at 0.88%.
-          </p>
-          <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/multi_modal.pdf" target="_blank" rel="noopener">
-            View Analysis Report →
-          </a>
+      <!-- 1 · UNSW research internship (featured) -->
+      <article class="pcard pcard--full">
+        <div class="pcard-visual has-img fit-contain" style="--img-bg:#fff;">
+          <img src="assets/img/1_unsw.png" alt="Sydney transit network plot showing modelled route choices" loading="lazy">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">2 cities</span>
+            <span class="pcard-stat-label">Sydney and Bengaluru, one modelling pipeline</span>
+          </div>
         </div>
-      </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Route choice modelling</li>
+            <li>Transit networks</li>
+            <li>GTFS</li>
+          </ul>
+          <h3>Comparative Route-Choice Modeling for Transit Networks</h3>
+          <p class="pcard-meta">Research Intern, UNSW Sydney, Jun–Jul 2026, under Prof. Taha Rashidi</p>
+          <p class="pcard-desc">
+            Built a pipeline comparing Expanded Path Size Logit and Nested Recursive Logit on transit
+            networks in Sydney and Bengaluru, combining real GTFS feeds and ridership data in a
+            reproducible Python workflow.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/pt_rc_eps_nrl.pdf" target="_blank" rel="noopener">Read report</a>
+            <a class="pbtn" href="https://github.com/kartikeya-gaur/PT_route_choice_eps_nrl_mini_project" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
 
-  <!-- Project 5: Contributor Verification -->
-  <div class="project-card">
-    <div class="project-card-body">
-      <span class="project-tag-pill">Deep Learning</span>
-      <h3>Contributor Verification with Robust DNNs</h3>
-      <p>
-        Built a multi-branch Deep Neural Network with L2 regularization and Dropout to verify contributors, framed as binary classification on 88,340 samples with text sequence embeddings and categorical feature inputs (Keras Functional API). Ranked 11 of 25 on the private leaderboard (score 0.8607).
-      </p>
-      <a class="report-link" href="https://kartikeya-gaur.github.io/assets/pdf/ml_1.pdf" target="_blank" rel="noopener">
-        Read Project Report →
-      </a>
+      <!-- 2 · Petrapole capstone -->
+      <article class="pcard pcard--half">
+        <div class="pcard-visual has-img">
+          <img src="assets/img/2_petrapole.png" alt="Map of Land Port Petrapole with utilisation charts" loading="lazy">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">191.7%</span>
+            <span class="pcard-stat-label">warehouse utilisation at Land Port Petrapole</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Logistics</li>
+            <li>System dynamics</li>
+            <li>Simulation</li>
+          </ul>
+          <h3>Optimising Warehouse Utilisation at Land Port Petrapole</h3>
+          <p class="pcard-desc">
+            A capstone with Ernst &amp; Young (EY) LLP on over-utilisation at India's largest land port.
+            Proposed physical and process interventions, a Selective Pallet Racking design using ABC-XYZ
+            classification, and a five-layer IoT data architecture, then built an AnyLogic discrete-event
+            simulation of vessel and vehicle queuing bottlenecks.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/Augmented_Final_Report_EY.pdf" target="_blank" rel="noopener">Read capstone report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 · Semiring Dijkstra -->
+      <article class="pcard pcard--half">
+        <div class="pcard-visual has-img">
+          <img src="assets/img/5_dijkstra.png" alt="Multimodal route on the Bengaluru road and bus network" loading="lazy">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">(min, +)</span>
+            <span class="pcard-stat-label">one Dijkstra, swappable cost algebras</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Algorithms</li>
+            <li>Network science</li>
+          </ul>
+          <h3>Semiring-Based Dijkstra for Multimodal Route Planning</h3>
+          <p class="pcard-desc">
+            An algebraic routing engine in Python that unifies road and BMTC bus networks into a single
+            category-theoretic graph. A generalised Dijkstra algorithm finds optimal paths under
+            interchangeable semirings for distance, time, fare, safety, or lexicographic combinations.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/SL203_Project_Report_Kartikeya_Gaur_26371.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 · Convex travel demand -->
+      <article class="pcard">
+        <div class="pcard-visual" style="--ox:70%; --oy:130%;">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">1 program</span>
+            <span class="pcard-stat-label">distribution, modal split and assignment solved together</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Choice modelling</li>
+            <li>Optimization</li>
+          </ul>
+          <h3>Convex Travel Demand Forecasting Model</h3>
+          <p class="pcard-desc">
+            Reproduced a combined travel demand model as a single convex program in Julia/JuMP, with
+            entropy terms as exponential cones and link-latency integrals as power cones, solved with MOSEK.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/ce271_project_report_kartikeya_rahul.pdf" target="_blank" rel="noopener">Read case study</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 · Last-mile urban mobility -->
+      <article class="pcard">
+        <div class="pcard-visual has-img fit-contain" style="--img-bg:#fff;">
+          <img src="assets/img/4_delhi.png" alt="Choropleth map of average last-mile travel time across Delhi" loading="lazy">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">13.35%</span>
+            <span class="pcard-stat-label">of Delhi's area is high non-walk dependency (38 of 290 wards)</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>GIS</li>
+            <li>Urban planning</li>
+          </ul>
+          <h3>Last-Mile Urban Mobility</h3>
+          <p class="pcard-desc">
+            Analysed commuter survey data across Bengaluru, Delhi, and Nagpur with Python and interactive
+            Power BI dashboards. Nagpur had the highest population accessibility per station, at 0.88%.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/multi_modal.pdf" target="_blank" rel="noopener">Read analysis</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 · Contributor verification -->
+      <article class="pcard">
+        <div class="pcard-visual" style="--ox:92%; --oy:60%;">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">0.8607</span>
+            <span class="pcard-stat-label">private leaderboard score, rank 11 of 25</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Deep learning</li>
+          </ul>
+          <h3>Contributor Verification with Robust DNNs</h3>
+          <p class="pcard-desc">
+            A multi-branch neural network (Keras Functional API) with L2 regularization and dropout,
+            framed as binary classification on 88,340 samples with text embeddings and categorical inputs.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/ml_1.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 · Streetlight audit (featured, flipped) -->
+      <article class="pcard pcard--full pcard--flip">
+        <div class="pcard-visual has-img fit-contain" style="--img-bg:#0d0d12;">
+          <img src="assets/img/3_edgeai.png" alt="Smartphone web app detecting a streetlight at night" loading="lazy">
+          <div class="pcard-stat-block">
+            <span class="pcard-stat">0.886</span>
+            <span class="pcard-stat-label">mAP50 with YOLOv5nu, 2.5M parameters</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <ul class="pcard-chips">
+            <li>Edge AI</li>
+            <li>Computer vision</li>
+          </ul>
+          <h3>Nighttime Street Light Functional Audit</h3>
+          <p class="pcard-meta">Team of four, Edge AI course at IISc</p>
+          <p class="pcard-desc">
+            A vehicle-mounted detector that flags faulty streetlights on night drives. We collected 16.6 km
+            of dashcam footage across three Bengaluru localities, annotated about 2.1k frames, and enhanced
+            low-light frames before training. We compressed the models with quantization, pruning, and
+            distillation, and exported them (ONNX, TFLite INT8) to a smartphone web app.
+          </p>
+          <div class="pcard-actions">
+            <a class="pbtn pbtn--primary" href="https://www.samy101.com/edge-ai-26/projects/nighttime_streetlight/" target="_blank" rel="noopener">Project page</a>
+            <a class="pbtn" href="https://github.com/kartikeya-gaur/Nighttime-Street-Light-Audit" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
     </div>
-  </div>
-
-  <!-- Project 6: Edge AI -->
-  <div class="project-card project-card-wide">
-    <div class="project-card-body">
-      <span class="project-tag-pill">Edge AI · Computer Vision</span>
-      <h3>Nighttime Street Light Functional Audit</h3>
-      <p>
-        A vehicle-mounted detector that flags faulty streetlights during night drives, built with a team of four for the Edge AI course at IISc. We collected 16.6 km of dashboard-camera footage across three Bengaluru localities, annotated about 2.1k frames as working or faulty lamps, and enhanced low-light frames with CLAHE, gamma correction, and unsharp masking. YOLOv5nu was the best baseline (0.886 mAP50, 2.5M parameters). We compressed the models with FP16/INT8 quantization, pruning, and knowledge distillation, and exported them (ONNX, TFLite INT8) to a smartphone web app.
-      </p>
-      <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
-        <a class="report-link" href="https://www.samy101.com/edge-ai-26/projects/nighttime_streetlight/" target="_blank" rel="noopener">
-          View Project Page →
-        </a>
-        <a class="report-link" href="https://github.com/kartikeya-gaur/Nighttime-Street-Light-Audit" target="_blank" rel="noopener">
-          View on GitHub →
-        </a>
-      </div>
-    </div>
-  </div>
-
-</div>
-
   </div>
 </section>
-
 
 <!-- ════════════════════════════
      EXPERIENCE
