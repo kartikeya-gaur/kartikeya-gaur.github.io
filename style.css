@@ -1065,3 +1065,42 @@ body{
   transition: width 0.08s linear;
   pointer-events: none;
 }
+/* ═══════════════════════════════════════════════
+   Research Explorer Dynamic Color Tone & Sidebar
+   ═══════════════════════════════════════════════ */
+.sidebar-dashboard {
+  background: #ffffff;
+  border-radius: 8px;
+  width: 310px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: max-height 0.35s ease-in-out, border-top 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  max-height: 520px;
+}
+
+.sidebar-dashboard.collapsed {
+  max-height: 44px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.person-card a:hover {
+  filter: brightness(0.8);
+  text-decoration: underline;
+}
