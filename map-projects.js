@@ -99,23 +99,24 @@ const STYLES = {
 /* -------------------------
    4. UI Controls
 -------------------------- */
+// 1. Setup the dashboard container
 const dashboard = L.control({ position: "topright" });
 
 dashboard.onAdd = function () {
   const div = L.DomUtil.create("div", "sidebar-dashboard collapsed");
   div.innerHTML = `
-    <h3 class="sidebar-header" id="sidebar-header">
+    <div class="sidebar-header" id="sidebar-header">
       <span>Research Explorer</span>
-      <button class="sidebar-toggle" title="Expand panel">&#8964;</button>
-    </h3>
+      <button class="sidebar-toggle" id="sidebar-toggle-btn">&#8964;</button>
+    </div>
     <div id="project-list" class="scroll-container"></div>
-    <hr>
+    <hr style="margin:0; border:none; border-top:1px solid #eee;">
     <div id="project-details" class="details-box">
-      <p class="placeholder">Click any marker or project to view details</p>
+      <p class="placeholder" style="color:#777; font-size:13px; margin:0;">Click any marker to view details</p>
     </div>
     <div class="mini-legend">
-      <span class="dot lab"></span> Resource Center / Lab
-      <span class="dot study"></span> Study Area
+      <span><span class="dot lab" style="background:#7952B3;"></span> Resource Center</span>
+      <span><span class="dot study" style="background:#FFC107;"></span> Study Area</span>
     </div>
     <button id="reset-view" class="btn-reset">Reset Map View</button>
   `;
@@ -124,153 +125,78 @@ dashboard.onAdd = function () {
 
 dashboard.addTo(map);
 
-// Sidebar manual toggle listener
+// 2. Click header to toggle open/close manually
 setTimeout(() => {
-  const toggle = document.querySelector(".sidebar-toggle");
+  const header = document.getElementById("sidebar-header");
   const panel  = document.querySelector(".sidebar-dashboard");
+  const toggle = document.getElementById("sidebar-toggle-btn");
 
-  toggle?.addEventListener("click", () => {
+  header?.addEventListener("click", () => {
     panel.classList.toggle("collapsed");
     toggle.innerHTML = panel.classList.contains("collapsed") ? "&#8964;" : "&#8963;";
   });
 }, 100);
 
-// Cardinal Coordinate Tracker
-const coordDisplay = L.control({ position: "bottomleft" });
-coordDisplay.onAdd = function () {
-  const div = L.DomUtil.create("div", "latlng-display");
-  div.innerHTML = "20.000° N, 78.000° E";
-  return div;
-};
-coordDisplay.addTo(map);
-
-map.on("mousemove", (e) => {
-  const { lat, lng } = e.latlng;
-  const latDir = lat >= 0 ? "N" : "S";
-  const lngDir = lng >= 0 ? "E" : "W";
-  const el = document.querySelector(".latlng-display");
-  if (el) {
-    el.innerHTML = `${Math.abs(lat).toFixed(3)}° ${latDir},&nbsp;&nbsp;${Math.abs(lng).toFixed(3)}° ${lngDir}`;
-  }
-});
-
-/* -------------------------
-   5. Linked Logic & Selection
--------------------------- */
-const layerGroups = {};
-
-PROJECTS.forEach(proj => {
-  const group = L.layerGroup().addTo(map);
-  layerGroups[proj.id] = group;
-
-  // Lab Marker (Resource Center)
-  const labMarker = L.circleMarker(proj.coords.lab, STYLES.lab)
-    .bindTooltip(proj.labName, { direction: "top", offset: [0, -5] })
-    .addTo(group);
-
-  // Study layer (Point or Polyline)
-  let studyLayer;
-  if (proj.coords.type === 'line') {
-    studyLayer = L.polyline(proj.coords.study, STYLES.line).addTo(group);
-  } else {
-    studyLayer = L.circleMarker(proj.coords.study, STYLES.study).addTo(group);
-  }
-  studyLayer.bindTooltip(`Study Area: ${proj.location}`, { direction: "top", offset: [0, -5] });
-
-  // Hover animations
-  const pair = [labMarker, studyLayer];
-  pair.forEach(element => {
-    element.on('mouseover', () => {
-      labMarker.setStyle(STYLES.highlightLab);
-      studyLayer.setStyle(proj.coords.type === 'line' ? STYLES.highlightLine : STYLES.highlightStudy);
-      labMarker.openTooltip();
-      studyLayer.openTooltip();
-    });
-
-    element.on('mouseout', () => {
-      labMarker.setStyle(STYLES.lab);
-      studyLayer.setStyle(proj.coords.type === 'line' ? STYLES.line : STYLES.study);
-      labMarker.closeTooltip();
-      studyLayer.closeTooltip();
-    });
-  });
-
-  // Clicking Lab dot -> Opens dashboard with Lab Resource tone
-  labMarker.on('click', () => selectProject(proj.id, 'lab'));
-
-  // Clicking Study dot -> Opens dashboard with Study Area tone
-  studyLayer.on('click', () => selectProject(proj.id, 'study'));
-
-  // Sidebar list item
-  const item = document.createElement("div");
-  item.className = "project-item";
-  item.id = `item-${proj.id}`;
-  item.innerHTML = `<strong>${proj.location}</strong><br><small>${proj.labName}</small>`;
-  item.onclick = () => selectProject(proj.id, 'lab');
-  document.getElementById("project-list").appendChild(item);
-});
-
-/**
- * Automatically opens the dashboard, styles it with the tone of the clicked element,
- * and renders the resource person link.
- */
+// 3. Selection function (automatically pops open and applies color tone)
 function selectProject(id, clickedType = 'lab') {
   const proj = PROJECTS.find(p => p.id === id);
   if (!proj) return;
 
   const panel  = document.querySelector(".sidebar-dashboard");
-  const toggle = document.querySelector(".sidebar-toggle");
+  const toggle = document.getElementById("sidebar-toggle-btn");
   const header = document.getElementById("sidebar-header");
 
-  // 1. Automatically POP OPEN if collapsed
-  if (panel && panel.classList.contains("collapsed")) {
+  // Force open the panel
+  if (panel) {
     panel.classList.remove("collapsed");
     if (toggle) toggle.innerHTML = "&#8963;";
   }
 
-  // 2. Set dynamic color tone
-  const themeColor = clickedType === 'lab' ? COLOR_LAB : COLOR_STUDY;
+  // Dynamic Theme Color Tone
+  const themeColor = clickedType === 'lab' ? "#7952B3" : "#FFC107";
   const badgeLabel = clickedType === 'lab' ? "Resource Center / Lab" : "Study Area";
   const badgeTextColor = clickedType === 'lab' ? "#ffffff" : "#222222";
 
   if (panel) {
     panel.style.borderTop = `4px solid ${themeColor}`;
-    panel.style.boxShadow = `0 10px 28px ${themeColor}44`;
+    panel.style.boxShadow = `0 10px 25px ${themeColor}44`;
   }
   if (header) {
     header.style.color = themeColor;
   }
 
-  // 3. Highlight list item
+  // Active state in project list
   document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
   const activeItem = document.getElementById(`item-${id}`);
   if (activeItem) activeItem.classList.add('active');
 
-  // 4. Fill project info and person profile link
+  // Fill in project info and person profile link
+  const person = proj.person || { name: "Lead Researcher", role: "Investigator", url: proj.reportUrl };
+
   document.getElementById("project-details").innerHTML = `
-    <div style="display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; margin-bottom:6px; background:${themeColor}; color:${badgeTextColor};">
+    <span style="display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:12px; margin-bottom:6px; background:${themeColor}; color:${badgeTextColor};">
       ${badgeLabel}
-    </div>
-    <h4 style="margin: 4px 0 6px 0; color: #111;">${proj.title}</h4>
+    </span>
+    <h4 style="margin: 2px 0 6px 0; font-size: 14px; color: #111;">${proj.title}</h4>
     
-    <!-- Person Profile Card Link -->
-    <div class="person-card" style="background:#f8f9fa; border-left:3px solid ${themeColor}; padding:8px 10px; border-radius:4px; margin: 8px 0;">
-      <small style="color:#666; display:block; text-transform:uppercase; font-size:10px; letter-spacing:0.5px;">${proj.person.role}</small>
-      <a href="${proj.person.url}" target="_blank" rel="noopener noreferrer" 
-         style="color:${themeColor}; font-weight:600; text-decoration:underline; font-size:13px; display:inline-flex; align-items:center; gap:4px;">
-        <i class="fas fa-external-link-alt" style="font-size:10px;"></i> ${proj.person.name}
+    <!-- Person Profile Link -->
+    <div style="background:#f8f9fa; border-left:3px solid ${themeColor}; padding:6px 10px; border-radius:4px; margin: 8px 0;">
+      <small style="color:#666; display:block; text-transform:uppercase; font-size:9px; letter-spacing:0.5px;">${person.role}</small>
+      <a href="${person.url}" target="_blank" rel="noopener noreferrer" 
+         style="color:${themeColor}; font-weight:700; text-decoration:underline; font-size:12px; display:inline-flex; align-items:center; gap:4px;">
+        <i class="fas fa-external-link-alt" style="font-size:10px;"></i> ${person.name}
       </a>
     </div>
 
-    <p style="font-size: 13px; line-height: 1.45; color: #444; margin-top:6px;">${proj.desc}</p>
-    <div class="actions" style="margin-top:10px;">
-      <a href="${proj.reportUrl}" target="_blank" rel="noopener" class="btn-link" style="background:${themeColor}; color:${badgeTextColor}; padding:6px 12px; border-radius:4px; text-decoration:none; font-size:12px; font-weight:600;">
-        View Report →
-      </a>
-    </div>
+    <p style="font-size: 12px; line-height: 1.45; color: #444; margin: 6px 0 10px 0;">${proj.desc}</p>
+    
+    <a href="${proj.reportUrl}" target="_blank" rel="noopener" 
+       style="display:inline-block; background:${themeColor}; color:${badgeTextColor}; padding:5px 12px; border-radius:4px; text-decoration:none; font-size:12px; font-weight:600;">
+      View Report →
+    </a>
   `;
 
-  // 5. Fly to coordinates
+  // Fly to point/bounds
   const bounds = layerGroups[id].getLayers().reduce(
     (b, l) => b.extend(l.getBounds ? l.getBounds() : l.getLatLng()),
     L.latLngBounds()
