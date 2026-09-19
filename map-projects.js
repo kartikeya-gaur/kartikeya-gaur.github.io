@@ -1,9 +1,9 @@
 /* =========================================================
    Explorable Research Map – PRO UI VERSION
-   Features: Linked Hover, Dashboard UI, Cardinal Coordinates
+   Features: Linked Hover, Dynamic Color Dashboard, Coordinates
    ========================================================= */
 
-const INDIA_BOUNDS = [[-38, 60], [37, 155]]; // extended to include Sydney, AU
+const INDIA_BOUNDS = [[-38, 60], [37, 155]]; // Extended to include Sydney, AU
 const map = L.map("map", {
   zoomControl: true,
   maxBounds: INDIA_BOUNDS,
@@ -19,7 +19,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 /* -------------------------
-   2. Project Data (With Resource Person & Profiles)
+   2. Project Data & Person Info
 -------------------------- */
 const PROJECTS = [
   {
@@ -84,7 +84,7 @@ const PROJECTS = [
    3. Styles
 -------------------------- */
 const COLOR_LAB   = "#7952B3"; // Purple
-const COLOR_STUDY = "#FFC107"; // Amber/Yellow
+const COLOR_STUDY = "#FFC107"; // Amber / Gold
 
 const STYLES = {
   lab:   { radius: 9, fillColor: COLOR_LAB, color: "#fff", weight: 2, fillOpacity: 0.8 },
@@ -97,9 +97,8 @@ const STYLES = {
 };
 
 /* -------------------------
-   4. UI Controls
+   4. Research Explorer UI Control
 -------------------------- */
-// 1. Setup the dashboard container
 const dashboard = L.control({ position: "topright" });
 
 dashboard.onAdd = function () {
@@ -115,8 +114,8 @@ dashboard.onAdd = function () {
       <p class="placeholder" style="color:#777; font-size:13px; margin:0;">Click any marker to view details</p>
     </div>
     <div class="mini-legend">
-      <span><span class="dot lab" style="background:#7952B3;"></span> Resource Center</span>
-      <span><span class="dot study" style="background:#FFC107;"></span> Study Area</span>
+      <span><span class="dot lab" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#7952B3; margin-right:4px;"></span> Resource Center</span>
+      <span><span class="dot study" style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#FFC107; margin-right:4px;"></span> Study Area</span>
     </div>
     <button id="reset-view" class="btn-reset">Reset Map View</button>
   `;
@@ -125,7 +124,7 @@ dashboard.onAdd = function () {
 
 dashboard.addTo(map);
 
-// 2. Click header to toggle open/close manually
+// Manual toggle listener
 setTimeout(() => {
   const header = document.getElementById("sidebar-header");
   const panel  = document.querySelector(".sidebar-dashboard");
@@ -137,7 +136,82 @@ setTimeout(() => {
   });
 }, 100);
 
-// 3. Selection function (automatically pops open and applies color tone)
+// Coordinates Tracker
+const coordDisplay = L.control({ position: "bottomleft" });
+coordDisplay.onAdd = function () {
+  const div = L.DomUtil.create("div", "latlng-display");
+  div.innerHTML = "20.000° N, 78.000° E";
+  return div;
+};
+coordDisplay.addTo(map);
+
+map.on("mousemove", (e) => {
+  const { lat, lng } = e.latlng;
+  const latDir = lat >= 0 ? "N" : "S";
+  const lngDir = lng >= 0 ? "E" : "W";
+  const el = document.querySelector(".latlng-display");
+  if (el) {
+    el.innerHTML = `${Math.abs(lat).toFixed(3)}° ${latDir},&nbsp;&nbsp;${Math.abs(lng).toFixed(3)}° ${lngDir}`;
+  }
+});
+
+/* -------------------------
+   5. Render Dots & Link to Panel
+-------------------------- */
+const layerGroups = {};
+
+PROJECTS.forEach(proj => {
+  const group = L.layerGroup().addTo(map);
+  layerGroups[proj.id] = group;
+
+  // Lab Marker (Purple dot)
+  const labMarker = L.circleMarker(proj.coords.lab, STYLES.lab)
+    .bindTooltip(proj.labName, { direction: "top", offset: [0, -5] })
+    .addTo(group);
+
+  // Study layer (Yellow dot or line)
+  let studyLayer;
+  if (proj.coords.type === 'line') {
+    studyLayer = L.polyline(proj.coords.study, STYLES.line).addTo(group);
+  } else {
+    studyLayer = L.circleMarker(proj.coords.study, STYLES.study).addTo(group);
+  }
+  studyLayer.bindTooltip(`Study Area: ${proj.location}`, { direction: "top", offset: [0, -5] });
+
+  // Hover highlighting
+  const pair = [labMarker, studyLayer];
+  pair.forEach(element => {
+    element.on('mouseover', () => {
+      labMarker.setStyle(STYLES.highlightLab);
+      studyLayer.setStyle(proj.coords.type === 'line' ? STYLES.highlightLine : STYLES.highlightStudy);
+      labMarker.openTooltip();
+      studyLayer.openTooltip();
+    });
+
+    element.on('mouseout', () => {
+      labMarker.setStyle(STYLES.lab);
+      studyLayer.setStyle(proj.coords.type === 'line' ? STYLES.line : STYLES.study);
+      labMarker.closeTooltip();
+      studyLayer.closeTooltip();
+    });
+  });
+
+  // Clicking dots -> Opens dashboard with corresponding color tone
+  labMarker.on('click', () => selectProject(proj.id, 'lab'));
+  studyLayer.on('click', () => selectProject(proj.id, 'study'));
+
+  // Add item into the Research Explorer list
+  const item = document.createElement("div");
+  item.className = "project-item";
+  item.id = `item-${proj.id}`;
+  item.innerHTML = `<strong>${proj.location}</strong><br><small style="color:#666;">${proj.labName}</small>`;
+  item.onclick = () => selectProject(proj.id, 'lab');
+  document.getElementById("project-list").appendChild(item);
+});
+
+/* -------------------------
+   6. Selection & Pop-up Action
+-------------------------- */
 function selectProject(id, clickedType = 'lab') {
   const proj = PROJECTS.find(p => p.id === id);
   if (!proj) return;
@@ -146,14 +220,14 @@ function selectProject(id, clickedType = 'lab') {
   const toggle = document.getElementById("sidebar-toggle-btn");
   const header = document.getElementById("sidebar-header");
 
-  // Force open the panel
+  // Automatically pop open the dashboard
   if (panel) {
     panel.classList.remove("collapsed");
     if (toggle) toggle.innerHTML = "&#8963;";
   }
 
-  // Dynamic Theme Color Tone
-  const themeColor = clickedType === 'lab' ? "#7952B3" : "#FFC107";
+  // Theme color based on dot clicked
+  const themeColor = clickedType === 'lab' ? COLOR_LAB : COLOR_STUDY;
   const badgeLabel = clickedType === 'lab' ? "Resource Center / Lab" : "Study Area";
   const badgeTextColor = clickedType === 'lab' ? "#ffffff" : "#222222";
 
@@ -165,12 +239,12 @@ function selectProject(id, clickedType = 'lab') {
     header.style.color = themeColor;
   }
 
-  // Active state in project list
+  // Mark active list item
   document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
   const activeItem = document.getElementById(`item-${id}`);
   if (activeItem) activeItem.classList.add('active');
 
-  // Fill in project info and person profile link
+  // Populate details with researcher profile link
   const person = proj.person || { name: "Lead Researcher", role: "Investigator", url: proj.reportUrl };
 
   document.getElementById("project-details").innerHTML = `
@@ -196,7 +270,7 @@ function selectProject(id, clickedType = 'lab') {
     </a>
   `;
 
-  // Fly to point/bounds
+  // Zoom into clicked area
   const bounds = layerGroups[id].getLayers().reduce(
     (b, l) => b.extend(l.getBounds ? l.getBounds() : l.getLatLng()),
     L.latLngBounds()
@@ -204,7 +278,7 @@ function selectProject(id, clickedType = 'lab') {
   map.flyToBounds(bounds, { padding: [50, 50], duration: 1.2 });
 }
 
-// Reset button handler
+// Reset button
 document.getElementById("reset-view").onclick = () => {
   map.flyToBounds(INDIA_BOUNDS, { duration: 1.5 });
   document.querySelectorAll('.project-item').forEach(i => i.classList.remove('active'));
@@ -212,17 +286,17 @@ document.getElementById("reset-view").onclick = () => {
   const panel  = document.querySelector(".sidebar-dashboard");
   const header = document.getElementById("sidebar-header");
   if (panel) {
-    panel.style.borderTop = "";
+    panel.style.borderTop = `4px solid ${COLOR_LAB}`;
     panel.style.boxShadow = "";
   }
   if (header) {
     header.style.color = "";
   }
-  document.getElementById("project-details").innerHTML = '<p class="placeholder">Select a project</p>';
+  document.getElementById("project-details").innerHTML = '<p class="placeholder" style="color:#777; font-size:13px; margin:0;">Click any marker to view details</p>';
 };
 
 /* -------------------------
-   6. India Base Layer
+   7. India Boundary Overlay
 -------------------------- */
 fetch("bound.geojson")
   .then(res => res.json())
@@ -232,4 +306,4 @@ fetch("bound.geojson")
       style: { color: "#343A40", weight: 1, fillColor: "#E1E8EB", fillOpacity: 0.15 }
     }).addTo(map);
   })
-  .catch(() => console.log("bound.geojson not found, continuing without overlay."));
+  .catch(() => console.log("bound.geojson not loaded, continuing."));
