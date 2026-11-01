@@ -10,7 +10,7 @@
   <meta property="og:title" content="Kartikeya Gaur | PhD Applicant">
   <meta property="og:description" content="Research portfolio in Geospatial Intelligence and AI for Infrastructure">
   <meta property="og:type" content="website">
-  
+
   <link rel="icon"
 href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text x='-10' y='52' font-size='56'>🦉</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,16 +19,16 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="talks.css">
 </head>
 <body>
 
-<!-- ════════════════════════════
-     NAVIGATION
-════════════════════════════ -->
+<!-- NAVIGATION -->
 <nav class="site-nav" id="site-nav">
   <ul class="nav-links" id="nav-links">
     <li><a href="#">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#talks">Talks</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="https://kartikeya-gaur.github.io/assets/pdf/290926_CV_Kartikeya_Gaur.pdf" target="_blank" rel="noopener">CV</a></li>
     <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -42,9 +42,8 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
 
 <!-- Scroll progress bar -->
 <div id="scroll-progress"></div>
-<!-- ════════════════════════════
-     HERO
-════════════════════════════ -->
+
+<!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-grid">
 
@@ -129,36 +128,11 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </div>
 </header>
 
-<!-- ════════════════════════════
-     RESEARCH FOCUS
-════════════════════════════ -->
-<!-- <section class="section" id="research">
-  <div class="section-inner">
-    <header class="section-header">
-      <span class="section-label">Focus Areas</span>
-      <h2 class="section-title">Where AI meets<br>Earth Intelligence</h2>
-    </header>
-    
-    <div class="research-tags">
-      <span class="tag">Geospatial AI</span>
-      <span class="tag">Satellite Altimetry</span>
-      <span class="tag">Transportation Systems</span>
-      <span class="tag">Infrastructure Analytics</span>
-      <span class="tag">Remote Sensing</span>
-      <span class="tag">GIS &amp; Cartography</span>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- ════════════════════════════
-     INTERACTIVE MAP
-════════════════════════════ -->
+<!-- INTERACTIVE MAP -->
 <div class="map-section" id="map-section">
   <div class="map-header-wrap">
     <div class="map-header-left">
       <span class="section-label on-dark">Projects</span>
-      <!-- <h2 class="section-title on-dark">Projects across India</h2> -->
     </div>
 
     <p class="map-intro-text">
@@ -172,17 +146,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </div>
 </div>
 
-
-<!-- ════════════════════════════
-     PROJECTS
-     Replace your whole existing <section id="projects"> ... </section> with this.
-
-     Layout rhythm:  full  |  half + half  |  third + third + third  |  full (flipped)
-     Figures live in assets/img/ (1_unsw, 2_petrapole, 3_edgeai, 4_delhi, 5_dijkstra).
-     Change the file extension below if yours aren't .png.
-     "fit-contain" = show the whole figure on a plain background (plots, screenshots);
-     without it the image fills the panel and is cropped (maps).
-════════════ -->
+<!-- PROJECTS -->
 <section class="section section-white" id="projects">
   <div class="section-inner">
     <header class="section-header">
@@ -379,9 +343,77 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </div>
 </section>
 
-<!-- ════════════════════════════
-     EXPERIENCE
-════════════════════════════ -->
+<!-- TALKS: communicating complex ideas -->
+<section class="section" id="talks">
+  <div class="section-inner">
+    <header class="section-header">
+      <span class="section-label">Communicating Complex Ideas</span>
+      <p class="talks-lead">
+        Three talks, each harder than the last. Each starts from something familiar,
+        such as night lights, a river, or an auction, and builds toward the formal idea.
+      </p>
+    </header>
+
+    <div class="talk-grid">
+
+      <article class="talk-card">
+        <span class="talk-num">1</span>
+        <span class="talk-level">Introductory</span>
+        <h3>QGIS Workshop</h3>
+        <p class="pcard-meta">Feb 2023 · Undergraduate audience</p>
+        <p class="pcard-desc">
+          A beginner session on GIS and remote sensing for people new to spatial data.
+          It opens with night-light imagery and a food-delivery map, then covers history,
+          spectral signatures, raster/vector/TIN models and map projections, with a
+          quiz and a hands-on QGIS demo.
+        </p>
+        <div class="pcard-actions">
+          <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/QGIS%20Workshop%20(2).pdf" target="_blank" rel="noopener">View slides</a>
+        </div>
+      </article>
+
+      <article class="talk-card">
+        <span class="talk-num">2</span>
+        <span class="talk-level">Intermediate</span>
+        <h3>Estimating π with Buffon's Needle</h3>
+        <p class="pcard-meta">Mar 2025 · Pi Day talk, IIRS</p>
+        <p class="pcard-desc">
+          Starts from a needle on lined paper, derives why the hit probability gives π,
+          and checks it with a million-trial Python simulation. It then shows why Monte
+          Carlo matters, using a four-parameter radiation view factor with a 95%
+          confidence interval.
+        </p>
+        <div class="pcard-actions">
+          <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/buffon_s_needle_kartikeya.pdf" target="_blank" rel="noopener">View slides</a>
+        </div>
+      </article>
+
+      <article class="talk-card">
+        <span class="talk-num">3</span>
+        <span class="talk-level">Advanced</span>
+        <h3>The Auction Algorithm</h3>
+        <p class="pcard-meta">Apr 2026 · SL224 Network Science and Optimisation, IISc</p>
+        <p class="pcard-desc">
+          A technical presentation of Bertsekas (1981) for the assignment problem.
+          It builds from primal-dual formulation to a bidding intuition, a worked 4×4
+          example, a termination proof, complexity analysis, and the hybrid
+          auction-Hungarian strategy.
+        </p>
+        <div class="pcard-actions">
+          <a class="pbtn pbtn--primary" href="https://kartikeya-gaur.github.io/assets/pdf/kartikeya_bertsekas1981_v1.pdf" target="_blank" rel="noopener">View slides</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="complexity-arrow" aria-hidden="true">
+      <span class="complexity-line"></span>
+      <span class="complexity-label">Complexity</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
 <section class="section" id="experience">
   <div class="section-inner">
     <header class="section-header">
@@ -437,15 +469,11 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </div>
 </section>
 
-
-<!-- ════════════════════════════
-     PUBLICATIONS
-════════════════════════════ -->
+<!-- PUBLICATIONS -->
 <section class="section" id="publications">
   <div class="section-inner">
     <header class="section-header">
       <span class="section-label">Academic Output</span>
-      <!-- <h2 class="section-title">Publications &amp;<br>Technical Reports</h2> -->
     </header>
 
     <ul class="pub-list">
@@ -474,10 +502,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </div>
 </section>
 
-
-<!-- ════════════════════════════
-     ACHIEVEMENTS
-════════════════════════════ -->
+<!-- ACHIEVEMENTS -->
 <section class="section" id="achievements">
   <div class="section-inner">
     <header class="section-header">
@@ -495,60 +520,11 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
           </div>
         </div>
       </li>
-
-      <!-- <li class="pub-item">
-        <span class="pub-year">2024</span>
-        <div class="pub-body">
-          <p class="pub-title">Workshops attended</p>
-          <p class="pub-venue">COEAI-SPARC on Hybrid Physics-AI Models for Climate, Weather and Water (IIT Kharagpur, Jun 2024) · Karyashala on Mathematical Foundations for AI/ML (SERB, IIT Indore, May 2024) · Remote Sensing and GIS in Rural Development (NPTEL, Jan 2023)</p>
-          <div class="pub-links">
-            <a href="https://drive.google.com/drive/folders/1p2RMbhNgCeUK_3QgtlZylvTD3zB83iCb" target="_blank" rel="noopener">Certificates</a>
-          </div>
-        </div>
-      </li> -->
     </ul>
   </div>
 </section>
 
-
-<!-- ════════════════════════════
-     EDUCATION
-════════════════════════════ -->
-<!-- <section class="section section-white" id="education">
-  <div class="section-inner">
-    <header class="section-header">
-      <span class="section-label">Academic Background</span>
-      <h2 class="section-title">Education</h2>
-    </header>
-
-    <div class="edu-grid">
-      <div class="edu-card">
-        <span class="edu-year-badge">2025 – 2027</span>
-        <h3>M.Tech — Infrastructure Systems</h3>
-        <p class="edu-school">Indian Institute of Science (IISc), Bengaluru</p>
-        <p class="edu-desc">
-          Focus on geospatial analysis, transportation engineering,
-          and data-driven infrastructure planning.
-        </p>
-      </div>
-      <div class="edu-card">
-        <span class="edu-year-badge">2021 – 2025</span>
-        <h3>B.Tech — Civil Engineering</h3>
-        <p class="edu-school">NIT Hamirpur</p>
-        <p class="edu-desc">
-          CGPA: 8.48 · Geomatics, structural engineering,
-          and computational methods.
-        </p>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- ════════════════════════════
-     FOOTER
-════════════════════════════ -->
-
+<!-- FOOTER -->
 <footer class="mini-footer">
   <p>© 2026 Kartikeya Gaur</p>
   <a href="https://github.com/kartikeya-gaur"
@@ -578,13 +554,9 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
   </a>
 </footer>
 
-<!-- ════════════════════════════
-     SCRIPTS
-════════════════════════════ -->
+<!-- SCRIPTS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="map-projects.js"></script>
-
-
 
 <script>
   /* Mobile navigation toggle */
@@ -604,8 +576,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
     );
   }
 
-  /* Subtle nav border on scroll */
-  /* Subtle nav border on scroll + progress bar */
+  /* Nav border on scroll + progress bar */
   const progressBar = document.getElementById('scroll-progress');
   const nav = document.getElementById('site-nav');
   window.addEventListener('scroll', () => {
@@ -615,36 +586,28 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64
     progressBar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
   }, { passive: true });
 
+  /* Theme toggle */
   const themeToggle = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme');
 
-const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.innerHTML =
+      savedTheme === 'dark'
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+  }
 
-if(savedTheme){
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  themeToggle.innerHTML =
-    savedTheme === 'dark'
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
-}
-
-themeToggle?.addEventListener('click', () => {
-
-  const current =
-    document.documentElement.getAttribute('data-theme');
-
-  const next =
-    current === 'dark' ? 'light' : 'dark';
-
-  document.documentElement.setAttribute('data-theme', next);
-
-  localStorage.setItem('theme', next);
-
-  themeToggle.innerHTML =
-    next === 'dark'
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
-});
+  themeToggle?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeToggle.innerHTML =
+      next === 'dark'
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+  });
 </script>
 
 </body>
